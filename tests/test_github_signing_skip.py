@@ -10,7 +10,7 @@ from selene import browser, query, have
 )
 def test_mobile_skip(setup_browser):
     if setup_browser == "mobile":
-        pytest.skip("Мобильный режим — не для десктопного теста")
+        pytest.skip("Разрешение не соответствует десктопному. Пропускаем.")
     browser.all("button").element_by(have.text("Sign up")).click()
 
 
@@ -22,6 +22,6 @@ def test_mobile_skip(setup_browser):
 )
 def test_desktop_skip(setup_browser):
     if setup_browser == "desktop":
-        pytest.skip("Десктопный режим — не для мобильного теста")
+        pytest.skip("Разрешение не соответствует мобильному. Пропускаем.")
     browser.element(".Button-content").click()
     browser.all(".HeaderMenu-button").element_by(have.text("Sign up")).click()
